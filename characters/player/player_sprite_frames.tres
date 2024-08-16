@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cnkakjdfofco7"]
+
+[ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="1_hu1vp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iutc2"]
+atlas = ExtResource("1_hu1vp")
+region = Rect2(102, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17nfc"]
+atlas = ExtResource("1_hu1vp")
+region = Rect2(0, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h57ik"]
+atlas = ExtResource("1_hu1vp")
+region = Rect2(17, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7il7"]
+atlas = ExtResource("1_hu1vp")
+region = Rect2(34, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_431y3"]
+atlas = ExtResource("1_hu1vp")
+region = Rect2(51, 204, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08cuq"]
+atlas = ExtResource("1_hu1vp")
+region = Rect2(68, 204, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iutc2")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17nfc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h57ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7il7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_431y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08cuq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Player_Input_Actions" load_steps=2 format=3 uid="uid://1fc05pqibmeo"]
+
+[ext_resource type="Script" path="res://characters/player/player_input_actions.gd" id="1_57vax"]
+
+[resource]
+script = ExtResource("1_57vax")
+left = &"left"
+right = &"right"
+up = &"up"
+down = &"down"
