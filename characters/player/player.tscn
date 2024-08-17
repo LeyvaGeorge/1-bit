@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq5cj3ooa4mkl"]
+[gd_scene load_steps=10 format=3 uid="uid://cq5cj3ooa4mkl"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_33iie"]
 [ext_resource type="SpriteFrames" uid="uid://cnkakjdfofco7" path="res://characters/player/player_sprite_frames.tres" id="1_hb71x"]
 [ext_resource type="Resource" uid="uid://1fc05pqibmeo" path="res://characters/player/player_input_action.tres" id="2_3vc43"]
 [ext_resource type="Script" path="res://characters/facing.gd" id="3_x5ljq"]
 [ext_resource type="Script" path="res://characters/player/player_input.gd" id="4_qxftb"]
+[ext_resource type="Script" path="res://characters/shooter.gd" id="6_2gvtm"]
+[ext_resource type="Resource" uid="uid://cgtcxr5cjknk1" path="res://weapons/projectiles/fireable_basic.tres" id="7_mjhg7"]
+[ext_resource type="Resource" uid="uid://f88fup37tnxx" path="res://data/group_names.tres" id="8_kxano"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tetx3"]
 radius = 4.0
@@ -26,7 +29,14 @@ position = Vector2(0, -8)
 sprite_frames = ExtResource("1_hb71x")
 animation = &"run"
 
-[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player", "shooter")]
 script = ExtResource("4_qxftb")
 player = NodePath("..")
+shooter = NodePath("../Shooter")
 actions = ExtResource("2_3vc43")
+
+[node name="Shooter" type="Node2D" parent="."]
+position = Vector2(8, -5)
+script = ExtResource("6_2gvtm")
+fireable = ExtResource("7_mjhg7")
+group_names = ExtResource("8_kxano")

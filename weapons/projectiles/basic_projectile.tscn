@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct8be82bjk34l"]
+
+[ext_resource type="Script" path="res://weapons/projectiles/projectile.gd" id="1_5acwi"]
+[ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="1_ihxpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3e5u"]
+atlas = ExtResource("1_ihxpn")
+region = Rect2(0, 17, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhmbe"]
+atlas = ExtResource("1_ihxpn")
+region = Rect2(17, 17, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15424"]
+atlas = ExtResource("1_ihxpn")
+region = Rect2(34, 17, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmgsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3e5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhmbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15424")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhmbe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5fy4"]
+radius = 3.0
+
+[node name="BasicProjectile" type="RigidBody2D"]
+gravity_scale = 0.1
+script = ExtResource("1_5acwi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gmgsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q5fy4")
