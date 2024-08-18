@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq5cj3ooa4mkl"]
+[gd_scene load_steps=13 format=3 uid="uid://cq5cj3ooa4mkl"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_33iie"]
 [ext_resource type="SpriteFrames" uid="uid://cnkakjdfofco7" path="res://characters/player/player_sprite_frames.tres" id="1_hb71x"]
@@ -6,12 +6,18 @@
 [ext_resource type="Script" path="res://characters/facing.gd" id="3_x5ljq"]
 [ext_resource type="Script" path="res://characters/player/player_input.gd" id="4_qxftb"]
 [ext_resource type="Script" path="res://characters/shooter.gd" id="6_2gvtm"]
+[ext_resource type="Script" path="res://characters/player/hand_anchor.gd" id="6_dsfp6"]
 [ext_resource type="Resource" uid="uid://cgtcxr5cjknk1" path="res://weapons/projectiles/fireable_basic.tres" id="7_mjhg7"]
 [ext_resource type="Resource" uid="uid://f88fup37tnxx" path="res://data/group_names.tres" id="8_kxano"]
+[ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="9_ob41l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tetx3"]
 radius = 4.0
 height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qis7s"]
+atlas = ExtResource("9_ob41l")
+region = Rect2(135, 204, 17, 16)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_33iie")
@@ -32,11 +38,23 @@ animation = &"run"
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player", "shooter")]
 script = ExtResource("4_qxftb")
 player = NodePath("..")
-shooter = NodePath("../Shooter")
+shooter = NodePath("../HandAnchor/Shooter")
 actions = ExtResource("2_3vc43")
 
-[node name="Shooter" type="Node2D" parent="."]
-position = Vector2(8, -5)
+[node name="HandAnchor" type="Node2D" parent="."]
+position = Vector2(0, -3)
+script = ExtResource("6_dsfp6")
+
+[node name="Shooter" type="RayCast2D" parent="HandAnchor"]
+position = Vector2(14, -1)
+target_position = Vector2(0, 0)
+hit_from_inside = true
 script = ExtResource("6_2gvtm")
 fireable = ExtResource("7_mjhg7")
 group_names = ExtResource("8_kxano")
+
+[node name="Sprite2D" type="Sprite2D" parent="HandAnchor/Shooter"]
+position = Vector2(-4, 0)
+rotation = 1.57079
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_qis7s")

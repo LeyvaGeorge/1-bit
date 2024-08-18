@@ -1,9 +1,10 @@
 class_name Shooter
-extends Node2D
+extends RayCast2D
 ## Lauches projectiles when try_shoot is called successfully
 
 @export var fireable : Fireable
 @export var group_names: GroupNames
+@export var default_direction = Vector2.RIGHT
 
 var projectiles_parent : Node
 
@@ -12,12 +13,17 @@ func _ready() -> void:
 	assert(projectiles_parent != null, "Projectiles node is required for this script to work.")
 
 func try_shoot() -> bool:
-	_shoot()
-	return true
+	if not is_colliding():
+		_shoot()
+		return true
 	
+	return false
+
+
 
 func _shoot():
 	var projectile = fireable.scene.instantiate() as Projectile
 	projectiles_parent.add_child(projectile)
 	projectile.global_position = global_position
-	
+	var launch_direction = default_direction.rotated(global_rotation)
+	projectile.launch(launch_direction)
