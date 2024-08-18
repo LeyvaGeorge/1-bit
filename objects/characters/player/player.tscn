@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://cq5cj3ooa4mkl"]
 
-[ext_resource type="Script" path="res://characters/player/player.gd" id="1_33iie"]
-[ext_resource type="SpriteFrames" uid="uid://cnkakjdfofco7" path="res://characters/player/player_sprite_frames.tres" id="1_hb71x"]
-[ext_resource type="Resource" uid="uid://1fc05pqibmeo" path="res://characters/player/player_input_action.tres" id="2_3vc43"]
-[ext_resource type="Script" path="res://characters/facing.gd" id="3_x5ljq"]
-[ext_resource type="Script" path="res://characters/player/player_input.gd" id="4_qxftb"]
-[ext_resource type="Script" path="res://characters/shooter.gd" id="6_2gvtm"]
-[ext_resource type="Script" path="res://characters/player/hand_anchor.gd" id="6_dsfp6"]
-[ext_resource type="Resource" uid="uid://cgtcxr5cjknk1" path="res://weapons/projectiles/fireable_basic.tres" id="7_mjhg7"]
+[ext_resource type="Script" path="res://objects/characters/player/player.gd" id="1_33iie"]
+[ext_resource type="SpriteFrames" uid="uid://cnkakjdfofco7" path="res://objects/characters/player/player_sprite_frames.tres" id="1_hb71x"]
+[ext_resource type="Resource" uid="uid://1fc05pqibmeo" path="res://objects/characters/player/player_input_action.tres" id="2_3vc43"]
+[ext_resource type="Script" path="res://objects/characters/facing.gd" id="3_x5ljq"]
+[ext_resource type="Script" path="res://objects/characters/player/player_input.gd" id="4_qxftb"]
+[ext_resource type="Script" path="res://objects/characters/shooter.gd" id="6_2gvtm"]
+[ext_resource type="Script" path="res://objects/characters/player/hand_anchor.gd" id="6_dsfp6"]
+[ext_resource type="Resource" uid="uid://cgtcxr5cjknk1" path="res://weapons/projectiles/basic/fireable_basic.tres" id="7_mjhg7"]
 [ext_resource type="Resource" uid="uid://f88fup37tnxx" path="res://data/group_names.tres" id="8_kxano"]
 [ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="9_ob41l"]
 
@@ -20,6 +20,7 @@ atlas = ExtResource("9_ob41l")
 region = Rect2(135, 204, 17, 16)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_33iie")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Fireable" load_steps=5 format=3 uid="uid://cgtcxr5cjknk1"]
+[gd_resource type="Resource" script_class="Fireable" load_steps=6 format=3 uid="uid://cgtcxr5cjknk1"]
 
 [ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="1_hl6gv"]
 [ext_resource type="Script" path="res://weapons/projectiles/fireable.gd" id="2_60jt5"]
-[ext_resource type="PackedScene" uid="uid://ct8be82bjk34l" path="res://weapons/projectiles/basic_projectile.tscn" id="2_bkc0o"]
+[ext_resource type="PackedScene" uid="uid://ct8be82bjk34l" path="res://weapons/projectiles/basic/basic_projectile.tscn" id="2_wkebg"]
+[ext_resource type="Resource" uid="uid://dooc26txh4mo" path="res://weapons/projectiles/basic/weapon_stats_basic.tres" id="4_2ljao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4keey"]
 atlas = ExtResource("1_hl6gv")
@@ -12,4 +13,5 @@ region = Rect2(16, 16, 16, 16)
 script = ExtResource("2_60jt5")
 display_name = &"Basic"
 icon = SubResource("AtlasTexture_4keey")
-scene = ExtResource("2_bkc0o")
+scene = ExtResource("2_wkebg")
+stats = ExtResource("4_2ljao")

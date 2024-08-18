@@ -1,18 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct8be82bjk34l"]
+[gd_scene load_steps=10 format=3 uid="uid://ct8be82bjk34l"]
 
-[ext_resource type="Script" path="res://weapons/projectiles/projectile.gd" id="1_5acwi"]
-[ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="1_ihxpn"]
+[ext_resource type="Script" path="res://weapons/projectiles/projectile.gd" id="1_gjudi"]
+[ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="2_mcp8r"]
+[ext_resource type="Script" path="res://weapons/hitbox_2d.gd" id="3_88msd"]
+[ext_resource type="Resource" uid="uid://dooc26txh4mo" path="res://weapons/projectiles/basic/weapon_stats_basic.tres" id="4_jhkmg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3e5u"]
-atlas = ExtResource("1_ihxpn")
+atlas = ExtResource("2_mcp8r")
 region = Rect2(0, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhmbe"]
-atlas = ExtResource("1_ihxpn")
+atlas = ExtResource("2_mcp8r")
 region = Rect2(17, 17, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15424"]
-atlas = ExtResource("1_ihxpn")
+atlas = ExtResource("2_mcp8r")
 region = Rect2(34, 17, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gmgsf"]
@@ -39,11 +41,20 @@ animations = [{
 radius = 3.0
 
 [node name="BasicProjectile" type="RigidBody2D"]
-gravity_scale = 0.1
-script = ExtResource("1_5acwi")
+collision_layer = 64
+collision_mask = 33
+gravity_scale = 0.3
+script = ExtResource("1_gjudi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gmgsf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q5fy4")
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+script = ExtResource("3_88msd")
+weapon_stats = ExtResource("4_jhkmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
 shape = SubResource("CircleShape2D_q5fy4")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://ql5pmlbe2kxr"]
+[gd_scene load_steps=4 format=4 uid="uid://ql5pmlbe2kxr"]
 
 [ext_resource type="TileSet" uid="uid://ceh80c2lkrhuf" path="res://levels/kenny_tile_set.tres" id="1_7bhf4"]
-[ext_resource type="PackedScene" uid="uid://cq5cj3ooa4mkl" path="res://characters/player/player.tscn" id="2_muhl3"]
+[ext_resource type="PackedScene" uid="uid://cq5cj3ooa4mkl" path="res://objects/characters/player/player.tscn" id="2_muhl3"]
+[ext_resource type="PackedScene" uid="uid://gb4i7ghluos2" path="res://objects/characters/enemies/invader.tscn" id="3_2y8uo"]
 
 [node name="Level1" type="Node2D"]
 
@@ -22,3 +23,12 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(139, 171)
 zoom = Vector2(3, 3)
+
+[node name="Enemy" parent="." instance=ExtResource("3_2y8uo")]
+position = Vector2(261, 144)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_2y8uo")]
+position = Vector2(198, 174)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_2y8uo")]
+position = Vector2(423, 128)

@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://gb4i7ghluos2"]
+
+[ext_resource type="Script" path="res://objects/characters/platformer_character_2d.gd" id="1_ctwyn"]
+[ext_resource type="Script" path="res://objects/characters/facing.gd" id="2_v73nn"]
+[ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="3_u1dkt"]
+[ext_resource type="Script" path="res://objects/hurtbox_2d.gd" id="4_tiul6"]
+[ext_resource type="Script" path="res://objects/object_stats.gd" id="5_je7b0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yj5s"]
+atlas = ExtResource("3_u1dkt")
+region = Rect2(68, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it6mx"]
+atlas = ExtResource("3_u1dkt")
+region = Rect2(0, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tbyy"]
+atlas = ExtResource("3_u1dkt")
+region = Rect2(17, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svje5"]
+atlas = ExtResource("3_u1dkt")
+region = Rect2(51, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6um2l"]
+atlas = ExtResource("3_u1dkt")
+region = Rect2(34, 272, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8e7l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yj5s")
+}],
+"loop": true,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it6mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tbyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svje5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it6mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6um2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svje5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="Resource" id="Resource_kk4gh"]
+script = ExtResource("5_je7b0")
+max_health = 100
+current_health = 100
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cp10w"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4g1rn"]
+radius = 5.0
+height = 12.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_ctwyn")
+
+[node name="Facing" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("2_v73nn")
+character = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Facing"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_b8e7l")
+animation = &"walk"
+frame = 1
+frame_progress = 0.042511
+
+[node name="HurtBox2D" type="Area2D" parent="Facing"]
+script = ExtResource("4_tiul6")
+stats = SubResource("Resource_kk4gh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/HurtBox2D"]
+position = Vector2(0, -6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cp10w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4g1rn")
