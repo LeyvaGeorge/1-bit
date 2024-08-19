@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://gb4i7ghluos2"]
+[gd_scene load_steps=16 format=3 uid="uid://gb4i7ghluos2"]
 
 [ext_resource type="Script" path="res://objects/characters/platformer_character_2d.gd" id="1_ctwyn"]
 [ext_resource type="Script" path="res://objects/characters/facing.gd" id="2_v73nn"]
 [ext_resource type="Texture2D" uid="uid://dmhc1010jfvbp" path="res://assets/kenny_1_bit/monochrome_tilemap_transparent.png" id="3_u1dkt"]
+[ext_resource type="Script" path="res://objects/object_sprite_2d.gd" id="4_ree45"]
 [ext_resource type="Script" path="res://objects/hurtbox_2d.gd" id="4_tiul6"]
-[ext_resource type="Script" path="res://objects/object_stats.gd" id="5_je7b0"]
+[ext_resource type="Resource" uid="uid://drdq57h8dkysc" path="res://objects/characters/enemies/invader_stats.tres" id="5_ea5wc"]
+[ext_resource type="Resource" uid="uid://b0du37jwtlunf" path="res://data/animation_names.tres" id="6_rmb3l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yj5s"]
 atlas = ExtResource("3_u1dkt")
@@ -60,11 +62,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_kk4gh"]
-script = ExtResource("5_je7b0")
-max_health = 100
-current_health = 100
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cp10w"]
 radius = 5.0
 height = 12.0
@@ -73,7 +70,7 @@ height = 12.0
 radius = 5.0
 height = 12.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Invader" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_ctwyn")
 
@@ -81,16 +78,19 @@ script = ExtResource("1_ctwyn")
 script = ExtResource("2_v73nn")
 character = NodePath("..")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Facing"]
+[node name="CharacterSprite2D" type="AnimatedSprite2D" parent="Facing"]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_b8e7l")
 animation = &"walk"
 frame = 1
 frame_progress = 0.042511
+script = ExtResource("4_ree45")
+stats = ExtResource("5_ea5wc")
+animation_names = ExtResource("6_rmb3l")
 
 [node name="HurtBox2D" type="Area2D" parent="Facing"]
 script = ExtResource("4_tiul6")
-stats = SubResource("Resource_kk4gh")
+stats = ExtResource("5_ea5wc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Facing/HurtBox2D"]
 position = Vector2(0, -6)

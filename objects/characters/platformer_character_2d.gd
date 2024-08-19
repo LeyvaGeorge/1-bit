@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal direction_changed(direction: Vector2)
 
+
+
 ## Player's movement speed
 @export_range(0,150,5,"or_greater") var move_speed : float = 120.0
 @export var can_ground_jump : bool = true
